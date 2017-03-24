@@ -1,0 +1,10 @@
+GetNewFactIntent news
+GetNewFactIntent football
+GetNewFactIntent football news
+GetNewFactIntent soccer
+GetNewFactIntent soccer news
+GetNewFactIntent give me some news
+GetNewFactIntent give me some football news
+GetNewFactIntent give me some soccer news
+GetNewFactIntent tell me something
+AMAZON.HelpIntent open soccer updates
