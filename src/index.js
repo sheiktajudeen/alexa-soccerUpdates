@@ -38,12 +38,6 @@ var url = 'https://newsapi.org/v1/articles?source=four-four-two&sortBy=top&apiKe
  */
 var AlexaSkill = require('./AlexaSkill');
 
-/**
- * SpaceGeek is a child of AlexaSkill.
- * To read more about inheritance in JavaScript, see the link below.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
- */
 var Fact = function () {
     AlexaSkill.call(this, APP_ID);
 };
@@ -67,7 +61,6 @@ Fact.prototype.eventHandlers.onLaunch = function (launchRequest, session, respon
  * Overridden to show that a subclass can override this function to teardown session state.
  */
 Fact.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
-    //console.log("onSessionEnded requestId: " + sessionEndedRequest.requestId + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
 };
 
@@ -123,6 +116,7 @@ function handleNewFactRequest(response) {
     FACTS.forEach((item) => {
       speechText = speechText + " " + item + "<break time = \"0.5s\"/>";
     });
+    speechText = speechText.replace('&','and');//SSML does not recognize &
     speechOutput = {
       speech: "<speak>" + speechText + "</speak>",
       type: AlexaSkill.speechOutputType.SSML
